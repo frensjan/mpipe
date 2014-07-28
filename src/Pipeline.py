@@ -12,6 +12,11 @@ class Pipeline(object):
         """Put *task* on the pipeline."""
         self._input_stage.put(task)
 
+    def put_all(self, tasks):
+        """Put all from the *tasks* iterable on the pipeline."""
+        for task in tasks:
+            self._input_stage.put(task)
+
     def get(self, timeout=None):
         """Return result from the pipeline."""
         result = None
